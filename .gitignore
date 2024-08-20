@@ -7,3 +7,4 @@ bagel-8b-v1.0/tokenizer.json
 bagel-8b-v1.0/model-00001-of-00004.safetensors
 bagel-8b-v1.0/model-00002-of-00004.safetensors
 bagel-8b-v1.0/model-00003-of-00004.safetensors
+bagel-8b-v1.0/generation_config.json
