@@ -2,7 +2,7 @@
 
 Create a an LLM pipeline that will transform any free text query into a SQL query, the key points of this task are:
 
-* Create a valid representation of SQL tables allowing for semantic search that will match th top results to the given free text query
+* Create a valid representation of SQL tables allowing for semantic search that will match the top results to the given free text query
 
 * Based on the table representation the LLM has to create a real SQL query, based on free text user query, that will allow for immediate usage
 
