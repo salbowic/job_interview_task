@@ -1,0 +1,131 @@
+{
+    "database_name": "CompanyDB",
+    "schemas": [
+      {
+        "schema_name": "public",
+        "tables": [
+          {
+            "table_name": "employees",
+            "columns": [
+              {"column_name": "employee_id", "data_type": "INTEGER", "is_primary_key": true},
+              {"column_name": "first_name", "data_type": "VARCHAR", "is_primary_key": false},
+              {"column_name": "last_name", "data_type": "VARCHAR", "is_primary_key": false},
+              {"column_name": "department_id", "data_type": "INTEGER", "is_primary_key": false},
+              {"column_name": "hire_date", "data_type": "DATE", "is_primary_key": false}
+            ],
+            "relationships": [
+              {"related_table": "departments", "relationship_type": "foreign_key", "local_column": "department_id", "foreign_column": "department_id"}
+            ]
+          },
+          {
+            "table_name": "departments",
+            "columns": [
+              {"column_name": "department_id", "data_type": "INTEGER", "is_primary_key": true},
+              {"column_name": "department_name", "data_type": "VARCHAR", "is_primary_key": false},
+              {"column_name": "manager_id", "data_type": "INTEGER", "is_primary_key": false}
+            ],
+            "relationships": [
+              {"related_table": "employees", "relationship_type": "foreign_key", "local_column": "manager_id", "foreign_column": "employee_id"}
+            ]
+          },
+          {
+            "table_name": "salaries",
+            "columns": [
+              {"column_name": "employee_id", "data_type": "INTEGER", "is_primary_key": true},
+              {"column_name": "salary_amount", "data_type": "DECIMAL", "is_primary_key": false},
+              {"column_name": "effective_date", "data_type": "DATE", "is_primary_key": false}
+            ],
+            "relationships": [
+              {"related_table": "employees", "relationship_type": "foreign_key", "local_column": "employee_id", "foreign_column": "employee_id"}
+            ]
+          }
+        ]
+      },
+      {
+        "schema_name": "sales",
+        "tables": [
+          {
+            "table_name": "orders",
+            "columns": [
+              {"column_name": "order_id", "data_type": "INTEGER", "is_primary_key": true},
+              {"column_name": "order_date", "data_type": "DATE", "is_primary_key": false},
+              {"column_name": "customer_id", "data_type": "INTEGER", "is_primary_key": false},
+              {"column_name": "sales_rep_id", "data_type": "INTEGER", "is_primary_key": false}
+            ],
+            "relationships": [
+              {"related_table": "customers", "relationship_type": "foreign_key", "local_column": "customer_id", "foreign_column": "customer_id"},
+              {"related_table": "sales_reps", "relationship_type": "foreign_key", "local_column": "sales_rep_id", "foreign_column": "sales_rep_id"}
+            ]
+          },
+          {
+            "table_name": "customers",
+            "columns": [
+              {"column_name": "customer_id", "data_type": "INTEGER", "is_primary_key": true},
+              {"column_name": "customer_name", "data_type": "VARCHAR", "is_primary_key": false},
+              {"column_name": "contact_number", "data_type": "VARCHAR", "is_primary_key": false}
+            ],
+            "relationships": []
+          },
+          {
+            "table_name": "sales_reps",
+            "columns": [
+              {"column_name": "sales_rep_id", "data_type": "INTEGER", "is_primary_key": true},
+              {"column_name": "first_name", "data_type": "VARCHAR", "is_primary_key": false},
+              {"column_name": "last_name", "data_type": "VARCHAR", "is_primary_key": false},
+              {"column_name": "region", "data_type": "VARCHAR", "is_primary_key": false}
+            ],
+            "relationships": []
+          },
+          {
+            "table_name": "products",
+            "columns": [
+              {"column_name": "product_id", "data_type": "INTEGER", "is_primary_key": true},
+              {"column_name": "product_name", "data_type": "VARCHAR", "is_primary_key": false},
+              {"column_name": "price", "data_type": "DECIMAL", "is_primary_key": false}
+            ],
+            "relationships": []
+          }
+        ]
+      },
+      {
+        "schema_name": "analytics",
+        "tables": [
+          {
+            "table_name": "sales_reports",
+            "columns": [
+              {"column_name": "report_id", "data_type": "INTEGER", "is_primary_key": true},
+              {"column_name": "report_date", "data_type": "DATE", "is_primary_key": false},
+              {"column_name": "total_sales", "data_type": "DECIMAL", "is_primary_key": false},
+              {"column_name": "region", "data_type": "VARCHAR", "is_primary_key": false}
+            ],
+            "relationships": []
+          },
+          {
+            "table_name": "customer_metrics",
+            "columns": [
+              {"column_name": "metric_id", "data_type": "INTEGER", "is_primary_key": true},
+              {"column_name": "customer_id", "data_type": "INTEGER", "is_primary_key": false},
+              {"column_name": "lifetime_value", "data_type": "DECIMAL", "is_primary_key": false},
+              {"column_name": "average_order_value", "data_type": "DECIMAL", "is_primary_key": false}
+            ],
+            "relationships": [
+              {"related_table": "sales.customers", "relationship_type": "foreign_key", "local_column": "customer_id", "foreign_column": "customer_id"}
+            ]
+          },
+          {
+            "table_name": "product_performance",
+            "columns": [
+              {"column_name": "performance_id", "data_type": "INTEGER", "is_primary_key": true},
+              {"column_name": "product_id", "data_type": "INTEGER", "is_primary_key": false},
+              {"column_name": "sales_quantity", "data_type": "INTEGER", "is_primary_key": false},
+              {"column_name": "revenue_generated", "data_type": "DECIMAL", "is_primary_key": false}
+            ],
+            "relationships": [
+              {"related_table": "sales.products", "relationship_type": "foreign_key", "local_column": "product_id", "foreign_column": "product_id"}
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  
