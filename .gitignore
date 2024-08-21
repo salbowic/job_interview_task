@@ -9,3 +9,4 @@ bagel-8b-v1.0/model-00002-of-00004.safetensors
 bagel-8b-v1.0/model-00003-of-00004.safetensors
 bagel-8b-v1.0/generation_config.json
 sqlcoder2-GGUF/sqlcoder2.Q4_K_M.gguf
+sqlcoder2-GGUF/sqlcoder2.Q8_0.gguf
