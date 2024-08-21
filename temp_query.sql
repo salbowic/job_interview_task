@@ -1,2 +1,6 @@
-SELECT COUNT(performance_id::integer) AS number_of_stars
-FROM analytics.product_performance;
+SELECT
+    department_name,
+    COUNT(manager_id) AS managers
+FROM public.departments
+GROUP BY department_name
+HAVING COUNT(manager_id) > 1;

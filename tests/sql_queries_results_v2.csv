@@ -1,0 +1,3 @@
+Text Query;Generated SQL Query
+How many stars are in milky way galaxy?;SELECT COUNT(performance_id::TEXT::INT) AS star_count FROM analytics.product_performance WHERE product_name ilike '%milky%way%galaxy%'
+Show me the names of employees and their departments.;"SELECT e.first_name, e.last_name, d.department_name FROM sales.employees AS e JOIN sales.departments AS d ON e.department_id = d.department_id;"

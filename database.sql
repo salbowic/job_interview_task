@@ -80,4 +80,3 @@ CREATE TABLE analytics.product_performance (
     revenue_generated DECIMAL,
     FOREIGN KEY (product_id) REFERENCES sales.products(product_id)
 );
-"""
