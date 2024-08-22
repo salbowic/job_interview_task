@@ -1,4 +1,4 @@
-# job_interview_task
+# Task
 
 Create a an LLM pipeline that will transform any free text query into a SQL query, the key points of this task are:
 

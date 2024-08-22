@@ -69,10 +69,6 @@ def is_query_correct(sql_query):
     Validates and fixes a SQL query using sqlfluff. Returns True if the query is correct after fixing,
     otherwise returns False.
     """
-    # Print the original SQL query (for debugging purposes)
-    print("Original SQL Query:")
-    print(sql_query)
-    print("\n")
 
     # Write the SQL query to a temporary file
     with open("temp_query.sql", "w") as f:
@@ -85,14 +81,6 @@ def is_query_correct(sql_query):
             capture_output=True,
             text=True
         )
-        
-        # Print the fixed SQL query (for debugging purposes)
-        with open("temp_query.sql", "r") as f:
-            fixed_sql_query = f.read()
-
-        print("Fixed SQL Query:")
-        print(fixed_sql_query)
-        print("\n")
         
         # Run sqlfluff lint on the fixed file
         lint_result = subprocess.run(
@@ -158,12 +146,10 @@ def text_to_sql_pipe(llm, user_question, ddl_file_path="database.sql"):
     
     # Generate the initial SQL query
     sql_query = get_sql_query_from_llm(generation_prompt, llm, user_question, ddl_statements)
-    print(f"Generated SQL Query:\n{sql_query}\n")
     
     if is_sql_query_valid(sql_query):
         # Verify and potentially correct the SQL query
         final_sql_query = verify_and_correct_sql(llm, sql_query, user_question, ddl_statements)
-        print(f"Final SQL Query After Verification and Correction:\n{final_sql_query}\n")
         
         return final_sql_query
     
@@ -185,4 +171,3 @@ def save_queries_to_csv(llm, queries, filename):
             
             # Write the text query and the generated SQL query to the CSV
             writer.writerow([text_query, generated_sql])
-            print(f"Saved query: {text_query}\nGenerated SQL:\n{generated_sql}\n")
